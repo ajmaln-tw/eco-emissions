@@ -49,48 +49,13 @@ const routes =
                     errorElement: <RootBoundary />
                 },
                 {
-                    path: "analytics",
-                    element:
-                        <PrivateRoute>
-                            <Analytics />
-                        </PrivateRoute>,
-                    errorElement: <RootBoundary />
-                },
-                {
-                    path: "notifications",
-                    element:
-                        <PrivateRoute>
-                            <NotificationTable />
-                        </PrivateRoute>,
-                    errorElement: <RootBoundary />
-                },
-                {
-                    path: "emissions",
-                    element:
-                        <PrivateRoute>
-                            <EmissionsData />
-                        </PrivateRoute>,
-                    errorElement: <RootBoundary />
-                },
-                {
                     path: "route-emissions",
                     element:
                         <PrivateRoute>
                             <EmissionCalc />
                         </PrivateRoute>,
                     errorElement: <RootBoundary />
-                },
-                {
-                    path: "profile",
-                    element:
-                        <PrivateRoute>
-                            <ProfileHome />
-                        </PrivateRoute>,
-                    children: profileRoutes || [],
-                    errorElement: <RootBoundary />
                 }
-
-
             ]
         },
         {
