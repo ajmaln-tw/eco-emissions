@@ -18,7 +18,7 @@ const ERROR_CODES = {
     JWT_TOKEN_EXPIRED: 4401,
     INVALID_TOKEN: 4403
 };
-
+const MT_API_KEY = process.env.REACT_APP_MARINE_TRAFFIC_URL;
 // const requestWrapper = (body = {}) => ({ data: { ...body } });
 const requestWrapper = (body = {}) => body;
 
@@ -65,13 +65,17 @@ const getRequestParams = ({ url, data, method }) => {
 };
 
 
-function* invokeApi(method, url, payload) {
+function* invokeApi(method, url, payload, extKeyApi) {
     const { types = ["REQUEST", "SUCCESS", "FAILURE"], data: payloadData } = payload;
     let requestAction = createAction(types[0]), successAction = createAction(types[1]), failureAction = createAction(types[2]);
 
     yield put(requestAction());
     const { api, config, baseURL, data } = getRequestParams({ url, data: payloadData, method });
-    const { data: apiResponse, error } = yield call(api, url, { config, baseURL, data });
+    let apiURL = baseURL;
+    if (extKeyApi === "marine") {
+        apiURL = `https://services.marinetraffic.com/api/portcalls/${MT_API_KEY}`;
+    }
+    const { data: apiResponse, error } = yield call(api, url, { config, baseURL: apiURL, data });
     const { data: response } = apiResponse || {};
     if (error) {
         yield put(failureAction({ error }));
@@ -123,6 +127,6 @@ function* invokeApi(method, url, payload) {
 
 
 export function* handleAPIRequest(apiFn, ...rest) {
-    let { method, url, payload } = apiFn(...rest);
-    return yield call(invokeApi, method, url, payload);
+    let { method, url, payload, extKeyApi } = apiFn(...rest);
+    return yield call(invokeApi, method, url, payload, extKeyApi);
 }

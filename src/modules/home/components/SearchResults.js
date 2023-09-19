@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, IconButton, Typography } from "@mui/material";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { STATE_REDUCER_KEY } from "../constants";
+import { STATE_REDUCER_KEY } from "../../dashboard";
 import { actions as sliceActions } from "../slice";
 import { createStructuredSelector } from "reselect";
 import { getResults } from "../selectors";

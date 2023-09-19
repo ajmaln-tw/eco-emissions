@@ -26,8 +26,13 @@ const initialState = {
         vesselsStats: {
             requestInProgress: false
         }
-    }
-
+    },
+    searchResult: {
+        requestInProgress: false,
+        data: []
+    },
+    searchTerm: "",
+    open: false
 };
 
 

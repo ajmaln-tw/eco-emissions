@@ -23,10 +23,10 @@ const RouteMap = (props) => {
     }, []);
     return <Box sx={{ display: "flex", justifyContent: "center", pt: "40px" }}>
         <CustomMap
-            title="Route Emissions"
+            title=""
             icon=""
-            height="65vh"
-            width="80vw"
+            height="90vh"
+            width="90vw"
             borderRadius="5px"
             overLay={true}
             overLayComponent={<OverLayFilter />}

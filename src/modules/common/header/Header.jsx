@@ -1,13 +1,11 @@
 import { Components } from "../../../common/components";
 import companyLogo from "../../../assets/images/logo_tele.png";
-import SearchBox from "../../home/components/SearchBox";
-import { useLocation } from "react-router-dom";
 
 const { Box, Grid } = Components;
 const Header = () => {
     //, "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.04)" }
     // const drawerToggle = useSelector(state => state[STATE_REDUCER_KEY]).drawerToggle;
-    const { pathname } = useLocation();
+
     return (
         <Grid
             component="header"
@@ -23,10 +21,6 @@ const Header = () => {
                         <img width={58} height={55} src={companyLogo} alt="logo" />
                     </Box>
                 </Box>
-                {/* Search */}
-                {pathname.includes("/analytics") && <SearchBox />}
-                {pathname.includes("/dashboard") && <SearchBox />}
-
             </Box>
         </Grid >
     );

@@ -6,7 +6,7 @@ import { FiMenu as Menu } from "react-icons/fi";
 import { actions as sliceActions } from "../slice";
 import { logout as logoutAction } from "../actions";
 import "./sideBar.css";
-import { Analytics, Dashboard, Emission, Notification, RouteEmission, Profile, Logout } from "../../../assets/svg";
+import { Dashboard, Logout } from "../../../assets/svg";
 
 export let active = {
     display: "flex",
@@ -39,29 +39,10 @@ const SideBar = () => {
         dispatch(logoutAction({ isManualLogout: true }));
     };
     let dashStyle = { ...inActive };
-    let analyticsStyle = { ...inActive };
-    let notificationsStyle = { ...inActive };
-    let profileStyle = { ...inActive };
-    let emissionsStyle = { ...inActive };
-    let routeEmissionStyle = { ...inActive };
     if (location.pathname === "/dashboard") {
         dashStyle = { ...active };
     }
-    if (location.pathname === "/analytics") {
-        analyticsStyle = { ...active };
-    }
-    if (location.pathname === "/notifications") {
-        notificationsStyle = { ...active };
-    }
-    if (location.pathname.includes("/profile")) {
-        profileStyle = { ...active };
-    }
-    if (location.pathname.includes("/emissions")) {
-        emissionsStyle = { ...active };
-    }
-    if (location.pathname.includes("/route-emissions")) {
-        routeEmissionStyle = { ...active };
-    }
+
 
     let logout = {
         color: "white.main",
@@ -98,36 +79,6 @@ const SideBar = () => {
                     <ListItemButton className="button-sidebar" sx={{ ...dashStyle, px: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../dashboard")}>
                         <Dashboard className="svg-Icon" />
                         {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Dashboard"}</ListItemText>}
-                    </ListItemButton>
-                </List>
-                <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...analyticsStyle, px: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../analytics")}>
-                        <Analytics />
-                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Analytics"}</ListItemText>}
-                    </ListItemButton>
-                </List>
-                <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...emissionsStyle, px: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../emissions")}>
-                        <Emission />
-                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Emissions"}</ListItemText>}
-                    </ListItemButton>
-                </List>
-                <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...routeEmissionStyle, px: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../route-emissions")}>
-                        <RouteEmission />
-                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Route Emissions"}</ListItemText>}
-                    </ListItemButton>
-                </List>
-                <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...notificationsStyle, px: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../notifications")}>
-                        <Notification />
-                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Notifications"}</ListItemText>}
-                    </ListItemButton>
-                </List>
-                <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton sx={{ ...profileStyle, px: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../profile/info")}>
-                        <Profile />
-                        {drawerToggle && <>  <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Profile"}</ListItemText></>}
                     </ListItemButton>
                 </List>
             </List>
