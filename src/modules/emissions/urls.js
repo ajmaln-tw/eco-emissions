@@ -10,6 +10,11 @@ export const API_URL = {
         VESSEL_SIZE_DROP_DOWN: "vessel-size-drop-down",
         DESTINATION_PORT: "destination-port-drop-down",
         DEPARTURE_PORT: "departure-port-drop-down"
+    },
+    MT: {
+        GET_SHIPS: "exportvesseltrack",
+        PORT_CALLS: "portcalls"
     }
 };
 
+//https://services.marinetraffic.com/api/portcalls/{api_key}

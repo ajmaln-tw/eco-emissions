@@ -9,7 +9,7 @@ import "leaflet/dist/leaflet.css";
 import CustomMap from "../../../../common/components/map/CustomMap";
 import { useEffect } from "react";
 import OverLayFilter from "./OverLayFilter";
-import { fetchVesselSizeDropDown, fetchVesselTypeDropDown } from "../../actions";
+import { fetchMT, fetchVesselSizeDropDown, fetchVesselTypeDropDown } from "../../actions";
 
 const RouteMap = (props) => {
     const requestInProgress = useSelector(state => state[STATE_REDUCER_KEY].routeEmission.requestInProgress);
@@ -18,6 +18,7 @@ const RouteMap = (props) => {
     //todo
     //1 Icon
     useEffect(() => {
+        dispatch(fetchMT());
         dispatch(fetchVesselTypeDropDown());
         dispatch(fetchVesselSizeDropDown());
     }, []);

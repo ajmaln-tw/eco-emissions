@@ -95,3 +95,15 @@ export const fetchDestinationPortDropDownApi = (data) => {
         }
     };
 };
+
+export const fetchDMTApi = (data) => {
+    return {
+        url: API_URL.MT.PORT_CALLS,
+        method: REQUEST_METHOD.GET,
+        payload: {
+            types: [ACTION_TYPES.FETCH_MT_REQUEST, ACTION_TYPES.FETCH_MT_SUCCESS, ACTION_TYPES.FETCH_MT_FAILURE],
+            data
+        },
+        extKeyApi: "marine"
+    };
+};

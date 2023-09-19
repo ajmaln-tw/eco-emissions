@@ -6,7 +6,8 @@ import {
     fetchVesselTypeDropDownApi,
     fetchVesselSizeDropDownApi,
     fetchDeparturePortDropDownApi,
-    fetchDestinationPortDropDownApi
+    fetchDestinationPortDropDownApi,
+    fetchDMTApi
 } from "./api";
 import { handleAPIRequest } from "../../utils/http";
 import { getEmissionDateRangeGraph, getEmissionFilter, getEmissionTypeGraph } from "./selectors";
@@ -72,7 +73,9 @@ export function* fetchDestinationPortDropDownSaga() {
         yield call(handleAPIRequest, fetchDestinationPortDropDownApi, { vesselType: vesselType.id, vesselSize: vesselSize.id });
     }
 }
-
+export function* fetchMTSaga() {
+    yield call(handleAPIRequest, fetchDMTApi);
+}
 export default function* moduleSaga() {
     yield all([
         takeLatest(ACTION_TYPES.OVERALL_EMISSIONS, overAllEmissions),
@@ -86,7 +89,8 @@ export default function* moduleSaga() {
         takeLatest(ACTION_TYPES.FETCH_VESSEL_TYPE_DROP_DOWN, fetchVesselTypeDropDownSaga),
         takeLatest(ACTION_TYPES.FETCH_VESSEL_SIZE_DROP_DOWN, fetchVesselSizeDropDownSaga),
         takeLatest(ACTION_TYPES.FETCH_DEPARTURE_DROP_DOWN, fetchDeparturePortDropDownSaga),
-        takeLatest(ACTION_TYPES.FETCH_DESTINATION_DROP_DOWN, fetchDestinationPortDropDownSaga)
-
+        takeLatest(ACTION_TYPES.FETCH_DESTINATION_DROP_DOWN, fetchDestinationPortDropDownSaga),
+        takeLatest(ACTION_TYPES.FETCH_MT, fetchMTSaga)
     ]);
 }
+//FETCH_MT

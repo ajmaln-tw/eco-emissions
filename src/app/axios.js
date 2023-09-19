@@ -1,6 +1,8 @@
 import axios from "axios";
 import queryString from "query-string";
 
+const MT_APT = process.env.REACT_APP_MARINE_TRAFFIC_URL;
+
 export const getRequest = (URL, payload) => {
   let { data: query = {}, config = {}, baseURL } = payload;
   return axios.get(queryString.stringifyUrl({ url: `${baseURL}/${URL}`, query }), config).then(response => response).catch((error) => ({ error }));
@@ -24,4 +26,9 @@ export const patchRequest = (URL, payload) => {
 export const deleteRequest = (URL, payload) => {
   let { data: query = {}, config = {}, baseURL } = payload;
   return axios.delete(queryString.stringifyUrl({ url: `${baseURL}/${URL}`, query }), config).then(response => response).catch((error) => ({ error }));
+};
+
+export const getMT = (URL, payload) => {
+  let { data: query = {}, config = {}, baseURL } = payload;
+  return axios.get(queryString.stringifyUrl({ url: `${baseURL}/${URL}/${MT_APT}`, query }), config).then(response => response).catch((error) => ({ error }));
 };

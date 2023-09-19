@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { createAction } from "@reduxjs/toolkit";
-import { deleteRequest, getRequest, patchRequest, postRequest, putRequest } from "../app/axios";
+import { deleteRequest, getMT, getRequest, patchRequest, postRequest, putRequest } from "../app/axios";
 import { API_URL } from "../modules/user-management/urls";
 import { call, delay, put } from "redux-saga/effects";
 import { errorNotify } from "./notificationUtils";
@@ -18,11 +18,11 @@ const ERROR_CODES = {
     JWT_TOKEN_EXPIRED: 4401,
     INVALID_TOKEN: 4403
 };
-const MT_API_KEY = process.env.REACT_APP_MARINE_TRAFFIC_URL;
+
 // const requestWrapper = (body = {}) => ({ data: { ...body } });
 const requestWrapper = (body = {}) => body;
 
-const getRequestParams = ({ url, data, method }) => {
+const getRequestParams = ({ url, data, method, extKeyApi }) => {
     let headers = HTTP_CONSTANTS.HTTP_HEADERS;
     let baseURL = process.env.REACT_APP_API_URL;
     let authHeaders = {};
@@ -30,12 +30,15 @@ const getRequestParams = ({ url, data, method }) => {
     let extraParams = {};
 
     let api = (method === REQUEST_METHOD.DELETE) ? deleteRequest : (method === REQUEST_METHOD.PUT) ? putRequest : (method === REQUEST_METHOD.PATCH) ? patchRequest : (method === REQUEST_METHOD.POST || REQUEST_METHOD.FILE) ? postRequest : getRequest;
-    if (method === REQUEST_METHOD.GET) {
+    if (method === REQUEST_METHOD.GET && extKeyApi !== "marine") {
         api = getRequest;
     }
     baseURL = process.env.REACT_APP_API_URL;
-    if (bearerToken) {
+    if (bearerToken && extKeyApi !== "marine") {
         authHeaders = { Authorization: `Bearer ${bearerToken}` };
+    }
+    if (extKeyApi === "marine") {
+        api = getMT;
     }
     // else {
     //     window.location.hash = "/";
@@ -70,10 +73,10 @@ function* invokeApi(method, url, payload, extKeyApi) {
     let requestAction = createAction(types[0]), successAction = createAction(types[1]), failureAction = createAction(types[2]);
 
     yield put(requestAction());
-    const { api, config, baseURL, data } = getRequestParams({ url, data: payloadData, method });
+    const { api, config, baseURL, data } = getRequestParams({ url, data: payloadData, method, extKeyApi });
     let apiURL = baseURL;
     if (extKeyApi === "marine") {
-        apiURL = `https://services.marinetraffic.com/api/portcalls/${MT_API_KEY}`;
+        apiURL = "https://services.marinetraffic.com/api/";
     }
     const { data: apiResponse, error } = yield call(api, url, { config, baseURL: apiURL, data });
     const { data: response } = apiResponse || {};
