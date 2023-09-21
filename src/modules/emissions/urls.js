@@ -16,5 +16,3 @@ export const API_URL = {
         PORT_CALLS: "portcalls"
     }
 };
-
-//https://services.marinetraffic.com/api/portcalls/{api_key}

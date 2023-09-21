@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { createSlice } from "@reduxjs/toolkit";
 import { LINE_GRAPHS_SAMPLE_DATA, STATE_REDUCER_KEY } from "./constants";
 import { ACTION_TYPES } from "./actions";
@@ -28,8 +29,11 @@ const initialState = {
         showVariables: false,
         data: {
             mapPositionCurrent: [17.6959515, 83.2873001],
-            mapJourney: routes.coordinates,
-            emissionRouteVariables: emissionJson.emissionRoute,
+            mapJourney: [
+                [8.750165, 78.21742167],
+                [6.996001667, 79.79937167]
+            ],
+            emissionRouteVariables: [],
             emissionSummary: { arrivalLocation: 0, departureLocation: "10 hr 33 mins" },
             emissionVariableValues: { co2: 1000, fuelConsumption: 880, sox: 982, nox: 987 }
         }
@@ -37,10 +41,26 @@ const initialState = {
     emissionFilter: {
         requestInProgress: false,
         data: {
-            vesselType: "",
-            vesselSize: "",
-            departure: "",
-            destination: ""
+            Start_Port_Id: "",
+            End_Port_Id: "",
+            Total_Distance: "",
+            Length: "",
+            Breadth: "",
+            Depth: "",
+            Draft: "",
+            Grt: "",
+            Dwt: "",
+            Total_Cargo_Onboard: "",
+            Cargo_Mt: "",
+            Avg_Actual_Speed_Logged: "",
+            Avg_Draft_Fore: "",
+            Avg_Draft_After: "",
+            Avg_Displacement: "",
+            Tot_ME_Run_Hours: "",
+            Log_Time_Duration: "",
+            Avg_AE_Power: "",
+            Vessel_Type: "",
+            Sub_Type: ""
         },
         isDrawerOpen: false,
         isBottomDrawer: false

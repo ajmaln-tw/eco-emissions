@@ -2,7 +2,7 @@ import { Files, Checkbox, CustomInput, CustomSelect, DatePicker, Input, RadioBut
 import CustomSwitch from "./form-controller-components/CustomSwitch";
 import FileUploadCommon from "./form-controller-components/FileUploadCommon";
 import Input2 from "./form-controller-components/input2";
-
+import Input3 from "./form-controller-components/input3";
 const FormController = (props) => {
   const { control, ...rest } = props;
 
@@ -11,6 +11,8 @@ const FormController = (props) => {
       return <Input {...rest} />;
     case "input2":
       return <Input2 {...rest} />;
+    case "input3":
+      return <Input3 {...rest} />;
     case "textarea":
       return <Textarea {...rest} />;
     case "select":

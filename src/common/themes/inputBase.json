@@ -7,13 +7,13 @@
                 "borderRadius": "5px",
                 "height": "25px",
                 "fontWeight": 600,
-                "color": "#000",
-                "backgroundColor": "#f8f8f8",
+                "color": "#B4B4B4",
+                "backgroundColor": "#FBFBFB",
                 "fieldset": {
-                    "border": "1px solid #E0F8E2 !important"
+                    "border": "1px solid #E4E4E4 !important"
                 },
                 " &:hover fieldset": {
-                    "border": "1px solid #0784D6 !important"
+                    "border": "1px solid #E4E4E4 !important"
                 }
             }
         }

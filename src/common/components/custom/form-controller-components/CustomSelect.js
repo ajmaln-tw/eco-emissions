@@ -21,14 +21,14 @@ function CustomSelect(props) {
                   styles={{
                     control: (baseStyles, state) => ({
                       ...baseStyles,
-                      border: state.isFocused ? "1px solid #0784D6" : "1px solid #000",
+                      border: state.isFocused ? "1px solid #B4B4B4" : "1px solid #E4E4E4", // B4B4B4
                       boxShadow: "none",
                       color: "#000",
                       fontSize: "10px",
-                      height: "12px",
+                      height: "13px",
                       width: width,
                       fontWeight: 400,
-                      borderRadius: "5px",
+                      borderRadius: "10px",
                       display: "flex",
                       alignItems: "center",
                       "&:hover": {

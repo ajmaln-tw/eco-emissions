@@ -93,4 +93,3 @@ export default function* moduleSaga() {
         takeLatest(ACTION_TYPES.FETCH_MT, fetchMTSaga)
     ]);
 }
-//FETCH_MT

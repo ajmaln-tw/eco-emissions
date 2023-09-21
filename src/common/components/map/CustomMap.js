@@ -12,6 +12,7 @@ import locationPng from "../../../assets/images/location.png";
 import markerPng from "../../../assets/images/blackMarkerDot.png";
 
 import "./styles.css";
+import _ from "lodash";
 
 
 const CustomMap = (props) => {
@@ -20,8 +21,14 @@ const CustomMap = (props) => {
         requestInProgress = false, icon, zoom = 5, borderRadius = "15px", markersList = [], overLay = false,
         overLayComponent } = props;
     const N = mapJourney.length - 1;
-    const pointOne = destination || `${mapJourney[0][0]} , ${mapJourney[0][1]}`;
-    const pointTwo = startingPoint || `${mapJourney[N][0]} , ${mapJourney[N][1]}`;
+    const p11 = mapJourney[0][0] || "";
+    const p12 = mapJourney[0][0] || "";
+
+    const p21 = mapJourney[N][0] || "";
+    const p22 = mapJourney[N][1] || "";
+
+    const pointOne = destination || `${p11} , ${p12}`;
+    const pointTwo = startingPoint || `${p21} , ${p22}`;
 
     const center = mapJourney[Math.floor(N / 2)];
     useEffect(() => {
@@ -44,7 +51,7 @@ const CustomMap = (props) => {
     });
     function EmissionMarkers({ locations }) {
         const markers = useMemo(() => {
-            return markersList.map(({ cosx, nox, lat, lng }, idx) => (
+            return !_.isEmpty(markersList) && markersList.map(({ cosx, nox, lat, lng }, idx) => (
                 <Marker position={[lat, lng]} key={`${idx}${cosx}${nox}`} icon={markerIcon}>
                     <Tooltip placement="top">{`COx: ${cosx}, NOx: ${nox}`}</Tooltip>
                 </Marker>
