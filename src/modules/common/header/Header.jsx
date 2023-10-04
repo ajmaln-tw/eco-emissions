@@ -1,5 +1,4 @@
 import { Components } from "../../../common/components";
-import companyLogo from "../../../assets/images/logo_tele.png";
 
 const { Box, Grid } = Components;
 const Header = () => {
@@ -18,7 +17,6 @@ const Header = () => {
             >
                 <Box sx={{ minWidth: "140px" }}>
                     <Box sx={{ m: 1, mr: 1, p: 2 }}>
-                        <img width={58} height={55} src={companyLogo} alt="logo" />
                     </Box>
                 </Box>
             </Box>

@@ -27,6 +27,7 @@ const initialState = {
     routeEmission: {
         requestInProgress: false,
         showVariables: false,
+        showLeftDrawer: true,
         data: {
             mapPositionCurrent: [17.6959515, 83.2873001],
             mapJourney: [
@@ -41,26 +42,26 @@ const initialState = {
     emissionFilter: {
         requestInProgress: false,
         data: {
-            Start_Port_Id: "",
-            End_Port_Id: "",
-            Total_Distance: "",
-            Length: "",
-            Breadth: "",
-            Depth: "",
-            Draft: "",
-            Grt: "",
-            Dwt: "",
-            Total_Cargo_Onboard: "",
-            Cargo_Mt: "",
-            Avg_Actual_Speed_Logged: "",
-            Avg_Draft_Fore: "",
-            Avg_Draft_After: "",
-            Avg_Displacement: "",
-            Tot_ME_Run_Hours: "",
-            Log_Time_Duration: "",
-            Avg_AE_Power: "",
-            Vessel_Type: "",
-            Sub_Type: ""
+            Start_Port_Id: { id: "111", name: "111" },
+            End_Port_Id: { id: "111", name: "111" },
+            Total_Distance: "2",
+            Length: "122",
+            Breadth: "123",
+            Depth: "111",
+            Draft: "11",
+            Grt: "11",
+            Dwt: "11",
+            Total_Cargo_Onboard: "121",
+            Cargo_Mt: "121",
+            Avg_Actual_Speed_Logged: "121",
+            Avg_Draft_Fore: "112",
+            Avg_Draft_After: "121",
+            Avg_Displacement: "121",
+            Tot_ME_Run_Hours: "121",
+            Log_Time_Duration: "121",
+            Avg_AE_Power: "122",
+            Vessel_Type: { id: "111", name: "111" },
+            Sub_Type: { id: "111", name: "111" }
         },
         isDrawerOpen: false,
         isBottomDrawer: false
@@ -102,6 +103,12 @@ const slice = createSlice({
         },
         setIsBottomDrawer: (state) => {
             _.set(state, "emissionFilter.isBottomDrawer", !_.get(state, "emissionFilter.isBottomDrawer"));
+        },
+        setLeftDrawer: (state) => {
+            _.set(state, "emissionFilter.showLeftDrawer", !_.get(state, "emissionFilter.showLeftDrawer"));
+        },
+        toggleBottomDrawer: (state, { payload }) => {
+            _.set(state, "emissionFilter.isBottomDrawer", payload);
         }
 
     },

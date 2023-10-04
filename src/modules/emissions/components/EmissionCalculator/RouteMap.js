@@ -8,35 +8,39 @@ import { getRouteEmission } from "../../selectors";
 import "leaflet/dist/leaflet.css";
 import CustomMap from "../../../../common/components/map/CustomMap";
 import { useEffect } from "react";
-import OverLayFilter from "./OverLayFilter";
-import { fetchMT, fetchVesselSizeDropDown, fetchVesselTypeDropDown } from "../../actions";
-
+import { fetchVesselSizeDropDown, fetchVesselTypeDropDown } from "../../actions";
+import LeftDrawer from "./LeftDrawer";
+import BottomDrawer from "./BottomDrawer";
 const RouteMap = (props) => {
     const requestInProgress = useSelector(state => state[STATE_REDUCER_KEY].routeEmission.requestInProgress);
     const { routeEmission: { mapPositionCurrent = [], mapJourney = [], emissionRouteCoordinatesVariables = [] } = {} } = props;
     const dispatch = useDispatch();
-    //todo
+
+    // todo
     //1 Icon
     useEffect(() => {
-        dispatch(fetchMT());
+        // dispatch(fetchMT());
         dispatch(fetchVesselTypeDropDown());
         dispatch(fetchVesselSizeDropDown());
     }, []);
-    return <Box sx={{ display: "flex", justifyContent: "center", pt: "40px" }}>
-        <CustomMap
-            title=""
-            icon=""
-            height="90vh"
-            width="90vw"
-            borderRadius="5px"
-            overLay={true}
-            overLayComponent={<OverLayFilter />}
-            center={mapPositionCurrent || []}
-            markersList={emissionRouteCoordinatesVariables || []}
-            mapJourney={mapJourney}
-            requestInProgress={requestInProgress}
-        />
-    </Box>;
+    return <>
+        <Box sx={{ display: "flex", justifyContent: "center", pt: "4px" }}>
+            <LeftDrawer />
+            <CustomMap
+                title=""
+                icon=""
+                height="70vh"
+                width="75vw"
+                borderRadius="5px"
+                overLay={false}
+                center={mapPositionCurrent || []}
+                markersList={emissionRouteCoordinatesVariables || []}
+                mapJourney={mapJourney}
+                requestInProgress={requestInProgress}
+            />
+            <BottomDrawer />
+        </Box>
+    </>;
 };
 const mapStateToProps = createStructuredSelector({
     routeEmission: getRouteEmission

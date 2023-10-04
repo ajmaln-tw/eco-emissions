@@ -1,13 +1,13 @@
-import { Grid, InputLabel, Typography } from "@mui/material";
+import { Box, Grid, InputLabel, Typography } from "@mui/material";
 import { ErrorMessage, Field } from "formik";
 import Select from "react-select";
 import { FORM_CONTROL_STYLE } from "./style";
-import TextError from "./TextError";
+import TextErrorType2 from "./TextErrorType2";
 
 function CustomSelect(props) {
   const { name = "", options = [], width = "150px", multiple = false, label = "", errorName = "", statusError = false, onChangeFromController, disabled = false, isMandatory = false, ...rest } = props;
   return (
-    <Grid sx={FORM_CONTROL_STYLE}>
+    <Grid sx={{ ...FORM_CONTROL_STYLE, width: "100%", mx: 1 }}>
       <InputLabel htmlFor={name} sx={{ fontSize: "12px" }}>{label} {isMandatory && <span style={{ color: "red", fontSize: "14px" }}> *</span>}</InputLabel>
       <Field
         as='select'
@@ -16,14 +16,15 @@ function CustomSelect(props) {
         {
           ({ field, form }) => {
             return (
-              <>
+              <Box>
                 <Select
                   styles={{
                     control: (baseStyles, state) => ({
                       ...baseStyles,
-                      border: state.isFocused ? "1px solid #B4B4B4" : "1px solid #E4E4E4", // B4B4B4
+                      border: state.isFocused ? "1px solid #a9a9a9" : "1px solid #E4E4E4", // B4B4B4
                       boxShadow: "none",
-                      color: "#000",
+                      background: "#FBFBFB",
+                      color: "#fbfbfb",
                       fontSize: "10px",
                       height: "13px",
                       width: width,
@@ -32,7 +33,7 @@ function CustomSelect(props) {
                       display: "flex",
                       alignItems: "center",
                       "&:hover": {
-                        borderColor: "#000"
+                        borderColor: "##c7c7c7"
                       }
                     }),
                     option: (provided) => ({
@@ -55,9 +56,9 @@ function CustomSelect(props) {
                   isMulti={multiple}
                   name={name}
                 />
-                {statusError ? <Typography variant="p" sx={{ color: "red.main", mt: 1, lineHeight: 0 }}>{errorName}</Typography> :
-                  <ErrorMessage component={TextError} name={name} />}
-              </>
+                {statusError ? <Typography variant="p" sx={{ color: "red.main", mt: 1.5, fontSize: "9px", lineHeight: 0 }}>{errorName}</Typography> :
+                  <ErrorMessage component={TextErrorType2} name={name} />}
+              </Box>
             );
           }
         }

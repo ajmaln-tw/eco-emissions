@@ -65,3 +65,23 @@ export const removeStringPortion = (str, maxLength = 20) => {
     }
     return str;
 };
+
+
+export const getGradientColor = (startColor, endColor) => {
+    // Convert the hexadecimal colors to RGB values.
+    const startColorRGB = [
+        parseInt(startColor.slice(1, 3), 16),
+        parseInt(startColor.slice(3, 5), 16),
+        parseInt(startColor.slice(5, 7), 16)
+    ];
+    const endColorRGB = [
+        parseInt(endColor.slice(1, 3), 16),
+        parseInt(endColor.slice(3, 5), 16),
+        parseInt(endColor.slice(5, 7), 16)
+    ];
+
+    // Create a linear gradient string with a top-to-bottom direction.
+    const gradient = `linear-gradient(0deg, rgba(${endColorRGB[0]}, ${endColorRGB[1]}, ${endColorRGB[2]}, 1) 0%, rgba(${startColorRGB[0]}, ${startColorRGB[1]}, ${startColorRGB[2]}, 1) 100%)`;
+
+    return gradient;
+};

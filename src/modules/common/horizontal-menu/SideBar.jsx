@@ -1,9 +1,8 @@
-import { Box, IconButton, List, ListItemButton, ListItemText } from "@mui/material";
+import { List, ListItemButton, ListItemText, Paper } from "@mui/material";
 import { useLocation, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { STATE_REDUCER_KEY } from "../constants";
-import { FiMenu as Menu } from "react-icons/fi";
-import { actions as sliceActions } from "../slice";
+// import { actions as sliceActions } from "../slice";
 import { logout as logoutAction } from "../actions";
 import "./sideBar.css";
 import { Dashboard, Logout } from "../../../assets/svg";
@@ -17,7 +16,7 @@ export let active = {
         color: "secondary.main",
         bgcolor: "primary.dark"
     },
-    fontWeight: "700 !important"
+    fontWeight: "600 !important"
 };
 export let inActive = {
     display: "flex",
@@ -34,7 +33,7 @@ const SideBar = () => {
     const location = useLocation();
     const drawerToggle = useSelector(state => state[STATE_REDUCER_KEY]).drawerToggle;
     const dispatch = useDispatch();
-    const handleDrawer = () => dispatch(sliceActions.setUnsetDrawer());
+    // const handleDrawer = () => dispatch(sliceActions.setUnsetDrawer());
     const handleLogout = () => {
         dispatch(logoutAction({ isManualLogout: true }));
     };
@@ -59,38 +58,45 @@ const SideBar = () => {
         justifyContent: "space-evenly",
         backgroundColor: "secondary.main",
         fontSize: "14px",
-        width: drawerToggle ? "270px" : "96px",
+        width: 51,
         transition: "width ease-in-out 300ms",
-        py: 0
+        zIndex: 2000000,
+        bgcolor: "red",
+        borderRadius: 0,
+        height: "100vh",
+        position: "absolute",
+        top: 1,
+        left: 1,
+        pt: 10
     };
 
     return (
 
-        <List sx={mainStyle}>
+        <Paper elevation={1} sx={mainStyle}>
             <List sx={{ px: 1.5, height: "calc(100vh - 240px) !important", overflowX: "hidden", overflowY: "auto" }}>
-                <List sx={{ px: 0.5, py: 0, mb: 2, display: "flex", justifyContent: drawerToggle ? "flex-start" : "center" }}>
-                    <Box >
+                <List sx={{ px: 0.1, py: 0, mb: 2, display: "flex", justifyContent: drawerToggle ? "flex-start" : "center" }}>
+                    {/* <Box >
                         <IconButton type="button" onClick={handleDrawer}>
                             <Menu size="20px" />
                         </IconButton>
-                    </Box>
+                    </Box> */}
                 </List>
-                <List sx={{ px: 0.5, py: 0 }}>
-                    <ListItemButton className="button-sidebar" sx={{ ...dashStyle, px: 1, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../dashboard")}>
+                <List sx={{ px: 0.1, py: 0 }}>
+                    <ListItemButton className="button-sidebar" sx={{ ...dashStyle, px: 0, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../dashboard")}>
                         <Dashboard className="svg-Icon" />
                         {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Dashboard"}</ListItemText>}
                     </ListItemButton>
                 </List>
             </List>
-            <List sx={{ px: 1.5, pt: 6 }}>
-                <List sx={{ px: 0.5, py: 0 }}>
+            <List sx={{ px: 1.0, pt: 6 }}>
+                <List sx={{ px: 0.1, py: 0 }}>
                     <ListItemButton sx={{ ...logout, px: 1, py: 0 }} onClick={() => handleLogout()}>
                         {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Logout"}</ListItemText>}
                         <Logout />
                     </ListItemButton>
                 </List>
             </List>
-        </List >
+        </Paper >
 
     );
 };
