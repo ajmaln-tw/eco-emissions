@@ -1,4 +1,4 @@
-import { List, ListItemButton, ListItemText, Paper } from "@mui/material";
+import { List, ListItemButton, Paper } from "@mui/material";
 import { useLocation, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { STATE_REDUCER_KEY } from "../constants";
@@ -84,14 +84,12 @@ const SideBar = () => {
                 <List sx={{ px: 0.1, py: 0 }}>
                     <ListItemButton className="button-sidebar" sx={{ ...dashStyle, px: 0, py: 0, height: "47px", fontSize: "14px", my: 0.4 }} onClick={() => navigate("../dashboard")}>
                         <Dashboard className="svg-Icon" />
-                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Dashboard"}</ListItemText>}
                     </ListItemButton>
                 </List>
             </List>
             <List sx={{ px: 1.0, pt: 6 }}>
                 <List sx={{ px: 0.1, py: 0 }}>
                     <ListItemButton sx={{ ...logout, px: 1, py: 0 }} onClick={() => handleLogout()}>
-                        {drawerToggle && <ListItemText sx={{ px: 1, fontSize: "14px !!important" }}>{"Logout"}</ListItemText>}
                         <Logout />
                     </ListItemButton>
                 </List>
