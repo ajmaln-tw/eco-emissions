@@ -40,7 +40,7 @@ const EmissionCalculatorFilterOverlay = (props) => {
         dispatch(fetchDestinationPortDropDown());
     };
 
-    return <Box sx={{ height: "60vh", overflowY: "scroll" }}>
+    return <Box sx={{ height: "70vh", overflowY: "scroll" }}>
         <Form onSubmit={handleSubmit} >
             <Grid container rowSpacing={2} columnSpacing={1}
                 sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
@@ -147,7 +147,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const filterEmission = withFormik({
     enableReinitialize: true,
-    // validationSchema: emissionRouteFilter,
+    validationSchema: emissionRouteFilter,
     mapPropsToValues: (props) => {
         return props.emissionFilter;
     },

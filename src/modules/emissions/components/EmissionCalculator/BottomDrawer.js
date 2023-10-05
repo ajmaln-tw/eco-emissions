@@ -16,9 +16,9 @@ const BottomDrawer = () => {
         open={isBottomDrawer}
         sx={{
             "& .MuiDrawer-paper": {
+                bgcolor: "transparent",
                 height: { sm: "32%", md: "28%" },
-                padding: "16px",
-                borderRadius: "16px 16px 0 0"
+                padding: "16px"
             }
         }}
     >

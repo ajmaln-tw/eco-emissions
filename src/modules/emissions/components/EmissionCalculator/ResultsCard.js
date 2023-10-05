@@ -4,12 +4,13 @@ import { getGradientColor as getGradient } from "../../../../utils/commonUtils";
 
 const Card = ({ color, title, value, textColor }) => {
 
-    return <Box sx={{ borderRadius: "15px", backgroundImage: color, p: 3, mt: 2, display: "flex", justifyContent: "center", alignItems: "space-between", flexDirection: "column" }}>
-        <Box sx={{ alignSelf: "flex-start", mb: 1 }}>
-            <Typography sx={{ fontSize: "18px", fontWeight: 500, color: textColor }}>{title}</Typography>
+    return <Box sx={{ borderRadius: "15px", minWidth: "180px", maxWidth: "230px", backgroundImage: color, p: 3, mt: 2, display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
+        <Box sx={{ mb: 1 }}>
+            <Typography sx={{ fontSize: "18px", fontWeight: 700, color: textColor }}>{title}</Typography>
         </Box>
-        <Box sx={{ alignSelf: "flex-end", mt: 1 }}>
-            <Typography sx={{ fontSize: "26px", fontWeight: 800, color: textColor }}>{value}</Typography>
+        <Box sx={{ mt: 1, textAlign: "center" }}>
+            <Typography sx={{ fontSize: "36px", fontWeight: 800, color: textColor }}>{value}</Typography>
+            <Typography sx={{ fontSize: "18px", fontWeight: 700, color: textColor }}>{"mt"}</Typography>
         </Box>
     </Box>;
 };
