@@ -17,7 +17,7 @@ const BottomDrawer = () => {
         sx={{
             "& .MuiDrawer-paper": {
                 bgcolor: "transparent",
-                height: { sm: "32%", md: "28%" },
+                height: { sm: "32%", md: "38%", lg: "38%", xl: "22%" },
                 padding: "16px"
             }
         }}
