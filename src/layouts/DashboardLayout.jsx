@@ -3,9 +3,8 @@ import { Box } from "@mui/material";
 import Header from "../modules/common/header/Header";
 import Footer from "../modules/common/footer/Footer";
 import SideBar from "../modules/common/horizontal-menu/SideBar";
+
 const DashboardLayout = ({ children }) => {
-
-
     return (
         <Box
             sx={{ minHeight: "100vh", width: 1 }}
