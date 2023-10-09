@@ -27,6 +27,7 @@ const initialState = {
     routeEmission: {
         requestInProgress: false,
         showVariables: false,
+        showLeftDrawer: true,
         data: {
             mapPositionCurrent: [17.6959515, 83.2873001],
             mapJourney: [
@@ -63,7 +64,7 @@ const initialState = {
             Sub_Type: ""
         },
         isDrawerOpen: false,
-        isBottomDrawer: false
+        isBottomDrawer: true
     },
     vesselTypeDropDown: {
         requestInProgress: false,
@@ -102,6 +103,12 @@ const slice = createSlice({
         },
         setIsBottomDrawer: (state) => {
             _.set(state, "emissionFilter.isBottomDrawer", !_.get(state, "emissionFilter.isBottomDrawer"));
+        },
+        setLeftDrawer: (state) => {
+            _.set(state, "emissionFilter.showLeftDrawer", !_.get(state, "emissionFilter.showLeftDrawer"));
+        },
+        toggleBottomDrawer: (state, { payload }) => {
+            _.set(state, "emissionFilter.isBottomDrawer", payload);
         }
 
     },

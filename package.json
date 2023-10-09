@@ -23,6 +23,7 @@
     "jwt-decode": "^3.1.2",
     "leaflet": "^1.9.3",
     "lodash": "^4.17.21",
+    "mapbox-gl": "^2.15.0",
     "material-react-table": "^1.9.3",
     "moment": "^2.29.4",
     "prop-types": "^15.8.1",

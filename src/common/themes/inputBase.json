@@ -3,11 +3,11 @@
         "styleOverrides": {
             "root": {
                 "multiline": "true",
-                "fontSize": "12px",
+                "fontSize": "10px",
                 "borderRadius": "5px",
-                "height": "25px",
-                "fontWeight": 600,
-                "color": "#B4B4B4",
+                "height": "35px",
+                "fontWeight": 500,
+                "color": "#000",
                 "backgroundColor": "#FBFBFB",
                 "fieldset": {
                     "border": "1px solid #E4E4E4 !important"

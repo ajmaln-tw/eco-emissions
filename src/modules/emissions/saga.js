@@ -1,4 +1,4 @@
-import { all, call, put, select, takeLatest } from "redux-saga/effects";
+import { all, call, fork, put, select, take, takeLatest } from "redux-saga/effects";
 import { ACTION_TYPES, fetchGraph } from "./actions";
 import {
     currentVesselEmissionAPI, graphEmissionDataAPI, listVesselAPI, overAllEmissionsAPI,
@@ -12,7 +12,7 @@ import {
 import { handleAPIRequest } from "../../utils/http";
 import { getEmissionDateRangeGraph, getEmissionFilter, getEmissionTypeGraph } from "./selectors";
 import _ from "lodash";
-
+import { actions as sliceAction } from "./slice";
 
 export function* overAllEmissions() {
     yield call(handleAPIRequest, overAllEmissionsAPI);
@@ -51,7 +51,14 @@ export function* searchRouteEmissionSaga() {
     const vesselType = { id: 1, name: "test" };
     const departurePort = { id: 11, name: "test" };
     const arrivalPort = { id: "test", name: "test" };
-    yield call(handleAPIRequest, fetchRouteEmissionApi, { vesselType: vesselType.id, departurePort: departurePort.name, arrivalPort: arrivalPort.name });
+    yield fork(handleAPIRequest, fetchRouteEmissionApi, { vesselType: vesselType.id, departurePort: departurePort.name, arrivalPort: arrivalPort.name });
+    const response = yield take([ACTION_TYPES.SEARCH_VESSEL_ROUTE_EMISSION_SUCCESS, ACTION_TYPES.SEARCH_VESSEL_ROUTE_EMISSION_FAILURE]);
+    if (response.type === ACTION_TYPES.SEARCH_VESSEL_ROUTE_EMISSION_FAILURE) {
+        yield put(sliceAction.toggleBottomDrawer(true));
+    }
+    if (response.type === ACTION_TYPES.SEARCH_VESSEL_ROUTE_EMISSION_SUCCESS) {
+        yield put(sliceAction.toggleBottomDrawer(true));
+    }
 }
 export function* fetchVesselTypeDropDownSaga() {
     yield call(handleAPIRequest, fetchVesselTypeDropDownApi);

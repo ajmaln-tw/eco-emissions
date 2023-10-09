@@ -15,8 +15,6 @@
 
 ## Naming Conventions
 
-- Components should be PascalCase.
-- Methods should be in camelCase and be named for their function.
-- Folder names should be in lower case / hyphen-case.
+## Deploy Status
 
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/cf339ebc-6017-40c4-a0ef-6a22ac5b5921/deploy-status)](https://app.netlify.com/sites/eco-emissions-dev/deploys)

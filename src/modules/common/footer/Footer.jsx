@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { IconButton, Modal, Tooltip } from "@mui/material";
 import { Box } from "@mui/system";
 import { useState } from "react";
@@ -70,11 +71,11 @@ const Footer = () => {
 
     return (
         <>
-            <IconButton sx={iconStyle} onClick={() => handleOpen()}>
+            {/* <IconButton sx={iconStyle} onClick={() => handleOpen()}>
                 <Tooltip title="Help Center" >
                     <HelpOutlineIcon fontSize="medium" sx={{ color: "primary.main" }} />
                 </Tooltip>
-            </IconButton>
+            </IconButton> */}
 
             <Main />
             <Modal

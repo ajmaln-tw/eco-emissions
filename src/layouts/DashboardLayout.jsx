@@ -10,7 +10,7 @@ const DashboardLayout = ({ children }) => {
             sx={{ minHeight: "100vh", width: 1 }}
         >
             <Header />
-            <Box sx={{ display: "flex", justifyContent: "space-between ", height: "100%" }}>
+            <Box sx={{ display: "flex", justifyContent: "space-between ", height: "100%", overflowY: "hidden" }}>
                 <SideBar />
                 <Box className="mainTreemetry" sx={{ flexGrow: 1, overflowX: "auto", display: "flex", flexDirection: "column", justifyContent: "space-between", height: "calc(100vh - 82px) !important ", width: "100%", overflowY: "auto" }}>
                     <Box sx={{ bgcolor: "white.main", borderRadius: "20px", flexGrow: 1 }}>

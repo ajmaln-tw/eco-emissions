@@ -11,11 +11,31 @@
 }
 
 .MapOverLayContainer01 {
-    z-index: 100000;
+    z-index: 998;
     padding: 10px 60px;
     pointer-events: none;
 }
 
 .MapOverLayContainer01>* {
     pointer-events: auto;
+}
+
+/* Reduce the size of the layer control icon (the checkbox) */
+.leaflet-control-layers-toggle i {
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Adjust the positioning of the layer control button */
+.leaflet-control-layers {
+    top: auto;
+    /* Reset the top position */
+    bottom: 10px;
+    /* Adjust to your desired distance from the bottom */
+}
+
+/* Move the layer control button closer to the control button */
+.leaflet-control-layers-toggle {
+    margin-top: 4px;
+    /* Adjust to your desired vertical spacing */
 }
