@@ -20,16 +20,28 @@
     pointer-events: auto;
 }
 
+/* Change the attribution color */
+.leaflet-control-attribution a {
+    color: #199900 !important;
+    font-family: Clash Display, Franklin Gothic Book, sans-serif;
+}
+
+/* Move the attribution to the bottom */
+.leaflet-bottom .leaflet-control-attribution {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+}
+
 /* Reduce the size of the layer control icon (the checkbox) */
 .leaflet-control-layers-toggle i {
     font-size: 16px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Clash Display, Franklin Gothic Book, sans-serif;
 }
 
 /* Adjust the positioning of the layer control button */
 .leaflet-control-layers {
     top: auto;
-    /* Reset the top position */
+    font-family: Clash Display, Franklin Gothic Book, sans-serif;
     bottom: 10px;
     /* Adjust to your desired distance from the bottom */
 }
