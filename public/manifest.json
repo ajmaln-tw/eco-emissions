@@ -1,6 +1,6 @@
 {
-  "short_name": "Telemetry",
-  "name": "Telemetry Emissions",
+  "short_name": "Eco Emission",
+  "name": "Emissions Calculator Web App",
   "icons": [
     {
       "src": "favicon.ico",

@@ -8,6 +8,7 @@ import { persister, store } from "./app/store";
 import { ReactNotifications } from "./common/components";
 import theme from "./common/themes/theme";
 import PermittedRoutes from "./PermittedRoutes";
+import LoadingWrapper from "./common/components/custom/ProjectLoading";
 
 
 const container = document.getElementById("root");
@@ -15,7 +16,7 @@ const root = createRoot(container);
 root.render(
   <StrictMode>
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persister}>
+      <PersistGate loading={<LoadingWrapper />} persistor={persister}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <ReactNotifications />
